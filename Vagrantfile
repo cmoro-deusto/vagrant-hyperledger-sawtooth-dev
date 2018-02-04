@@ -22,8 +22,8 @@ Vagrant.configure("2") do |config|
   end
 
   sawtoothdev.vm.network "public_network"
-  sawtoothdev.vm.network "forwarded_port", guest: 8008, host: 8008, protocol: "tcp", host_ip: "127.0.0.1"
-  sawtoothdev.vm.network "forwarded_port", guest: 4200, host: 4200, protocol: "tcp", host_ip: "127.0.0.1"
+  sawtoothdev.vm.network "forwarded_port", guest: 8008, host: 8008, host_ip: "127.0.0.1"
+  sawtoothdev.vm.network "forwarded_port", guest: 4200, host: 4200, host_ip: "127.0.0.1"
 
   # config.vm.box_check_update = false
 
