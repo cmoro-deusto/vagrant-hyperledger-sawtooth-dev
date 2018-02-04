@@ -40,5 +40,11 @@ You can also access the REST API from within the vagrant vm without starting the
 $ curl http://localhost:8008/blocks
 ```
 
+## Vagrant vm starting and basic usage demo
+[![asciicast](https://asciinema.org/a/FrXdgkkh7mK0Kzic0p3v9Z8Ui.png)](https://asciinema.org/a/FrXdgkkh7mK0Kzic0p3v9Z8Ui)
+
 ## Note
 The Hyperledger Sawtooth instalation is done following [this guide](https://sawtooth.hyperledger.org/docs/core/releases/latest/app_developers_guide/docker.html). Hyperledger Sawtooth is currently in _active_ development and suffers frequent changes. Provisioning might fail, you have been warned!!
+
+## Warning
+All the contents of the guest's (the vagrant vm) `/vagrant` folder are mapped to the host's (your machine)vagrant project directory using Virtual Box shared folders. That means anything you touch in the host project folder will also be changed in the guest `/vagrant` folder and viceversa. You might find this usefull for development, but bear in mind that the provision vagrant command will *delete* the `/vagrant/sawtooth-explorer` in each run, so beware if you have modifications to the Sawtooth Explorer code!
