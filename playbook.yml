@@ -24,11 +24,11 @@
 
     - get_url:
         url="https://sawtooth.hyperledger.org/docs/core/releases/latest/app_developers_guide/sawtooth-default.yaml"
-        dest="/vagrant"
+        dest="/vagrant/docker-compose.yml"
 
     - docker_service:
         project_src: /vagrant
-        files: sawtooth-default.yaml
+        files: docker-compose.yml
         state: present
 
     - file:
