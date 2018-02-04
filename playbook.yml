@@ -1,8 +1,23 @@
 ---
 
-- name: Install docker and docker-compose
+- name: Install docker and docker-compose and download Hyperledger Sawtooth docker-compose yaml
   hosts: "sawtoothdev"
   become: True
 
-  roles:
-    - { role: nickjj.docker, tags: docker }
+  tasks:
+    - include_role:
+        name: angstwad.docker_ubuntu
+      become: true
+
+      vars:
+        docker_edition: "ce"
+        docker_group_members: ['vagrant']
+
+    - get_url:
+        url="https://sawtooth.hyperledger.org/docs/core/releases/latest/app_developers_guide/sawtooth-default.yaml"
+        dest="/vagrant"
+
+    - docker_service:
+        project_src: /vagrant
+        files: sawtooth-default.yaml
+        state: present
