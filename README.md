@@ -1,9 +1,7 @@
 # Vagrant machine for Hyperledger Sawtooth Development
 
-## WARNING: this is a WORK IN PROGRESS
-
 ## Requirements
-Install vagrant and ansible on your host machine.
+Install [vagrant](https://www.vagrantup.com/) and [ansible](https://www.ansible.com/) on your host machine.
 
 ## Usage
 Clone this repository:
@@ -31,11 +29,17 @@ ssh into the vm and launch the `sawtooth-shell.sh` command:
 $ cd /vagrant
 $ ./sawtooth-shell.sh
 ```
-Check that the Sawtooth REST API is running:
+This scripts starts the `sawtooth-shell-default` docker container interactively, so you will end up logged in as root into that running container. To return to your host, just `exit` from the command line.
+
+Inside the `sawtooth-shell-default` container, you can check that the Sawtooth REST API is running:
 ```
 # curl http://rest-api:8008/blocks
 ```
-You can also access the REST API from within the vagrant vm without starting the sawtooth-shell container:
+Or by using the sawtooth cli:
+```
+# sawtooth block list --url http://rest-api:8008
+```
+You can also access the REST API from within the vagrant vm or your host machine, without starting the sawtooth-shell container (notice the `localhost` change in the url). This is quite useful for development:
 ```
 $ curl http://localhost:8008/blocks
 ```
@@ -62,4 +66,6 @@ You might find errors about not being able to communicate with the sawtooth api.
 The Hyperledger Sawtooth instalation is done following [this guide](https://sawtooth.hyperledger.org/docs/core/releases/latest/app_developers_guide/docker.html). Hyperledger Sawtooth is currently in _active_ development and suffers frequent changes. Provisioning might fail, you have been warned!!
 
 ## Warning
-All the contents of the guest's (the vagrant vm) `/vagrant` folder are mapped to the host's (your machine)vagrant project directory using Virtual Box shared folders. That means anything you touch in the host project folder will also be changed in the guest `/vagrant` folder and viceversa. You might find this usefull for development, but bear in mind that the provision vagrant command will *delete* the `/vagrant/sawtooth-explorer` in each run, so beware if you have modifications to the Sawtooth Explorer code!
+All the contents of the guest's (the vagrant vm) `/vagrant` folder are mapped to the host's (your machine) vagrant project directory using Virtual Box shared folders. That means anything you touch in the host project folder will also be changed in the guest `/vagrant` folder and viceversa. 
+
+You might find this useful for development, **but bear in mind that the provision vagrant command will *delete* the `/vagrant/sawtooth-explorer` in each run, so beware if you have modifications to the Sawtooth Explorer code!**
