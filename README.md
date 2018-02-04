@@ -52,7 +52,8 @@ Once webpack is finished compiling and the app is up, just go to `http://localho
 ![Sawtooth Explorer](sawtooth-explorer01.png)
 
 
-### Note: you might find errors about not being able to communicate with the sawtooth api. Those are probably caused by your browser not allowing CORS request on localhost. You could use [this Firefox extension](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/) to enable CORS on localhost easily.
+### Note: 
+You might find errors about not being able to communicate with the sawtooth api. Those are probably caused by your browser not allowing CORS request on localhost. You could use [this Firefox extension](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/) to enable CORS on localhost easily.
 
 ## Vagrant vm starting and basic usage demo
 [![asciicast](https://asciinema.org/a/FrXdgkkh7mK0Kzic0p3v9Z8Ui.png)](https://asciinema.org/a/FrXdgkkh7mK0Kzic0p3v9Z8Ui)
