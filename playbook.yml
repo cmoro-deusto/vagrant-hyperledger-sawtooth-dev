@@ -13,6 +13,15 @@
         docker_edition: "ce"
         docker_group_members: ['vagrant']
 
+    - include_role:
+        name: geerlingguy.nodejs
+
+      vars:
+        nodejs_npm_global_packages:
+          - name: "@angular/cli"
+          - name: "node-sass"
+          - name: "@angular-devkit/core"
+
     - get_url:
         url="https://sawtooth.hyperledger.org/docs/core/releases/latest/app_developers_guide/sawtooth-default.yaml"
         dest="/vagrant"
@@ -21,3 +30,19 @@
         project_src: /vagrant
         files: sawtooth-default.yaml
         state: present
+
+    - file:
+        state: absent
+        path: "/vagrant/sawtooth-explorer"
+
+    - git:
+        repo: 'https://github.com/hyperledger/sawtooth-explorer.git'
+        dest: /vagrant/sawtooth-explorer
+
+    - lineinfile:
+        path: /vagrant/sawtooth-explorer/src/environments/environment.ts
+        regexp: "^  apiURL: 'http://localhost:8080',"
+        line: "  apiURL: 'http://localhost:8008',"
+
+    - npm:
+        path: /vagrant/sawtooth-explorer
