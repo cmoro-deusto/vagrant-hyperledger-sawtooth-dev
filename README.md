@@ -40,6 +40,20 @@ You can also access the REST API from within the vagrant vm without starting the
 $ curl http://localhost:8008/blocks
 ```
 
+## Launching Sawtooth Explorer
+You can start Sawtooth Explorer as follows:
+```
+$ cd /vagrant
+$ ./sawtooth-explorer.sh
+```
+The script is very simple, it just runs `ng serve --host 0.0.0.0` on the `/vagrant/sawtooth-explorer` directory. You can also start and stop Sawtooth Explorer issuing the appropriate `ng` commands yourself.
+
+Once webpack is finished compiling and the app is up, just go to `http://localhost:4200` on your browser:
+![Sawtooth Explorer](sawtooth-explorer01.png)
+
+
+### Note: you might find errors about not being able to communicate with the sawtooth api. Those are probably caused by your browser not allowing CORS request on localhost. You could use [this Firefox extension](https://addons.mozilla.org/en-US/firefox/addon/cors-everywhere/) to enable CORS on localhost easily.
+
 ## Vagrant vm starting and basic usage demo
 [![asciicast](https://asciinema.org/a/FrXdgkkh7mK0Kzic0p3v9Z8Ui.png)](https://asciinema.org/a/FrXdgkkh7mK0Kzic0p3v9Z8Ui)
 
