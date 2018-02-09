@@ -14,7 +14,7 @@ Vagrant.configure("2") do |config|
     sudo chmod o+w /etc/ansible/roles
   EOM
 
-  sawtoothdev.vm.provision 'ansible', run: 'always', type: :ansible_local do |ansible|
+  sawtoothdev.vm.provision 'ansible', type: :ansible_local do |ansible|
     ansible.galaxy_role_file = '/vagrant/requirements.yml'
     ansible.galaxy_roles_path = '/etc/ansible/roles'
     ansible.galaxy_command = 'ansible-galaxy install --role-file=%{role_file} --roles-path=%{roles_path}'
